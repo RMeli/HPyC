@@ -1,4 +1,3 @@
-from http.client import NON_AUTHORITATIVE_INFORMATION
 import MDAnalysis as mda
 import numpy as np
 
@@ -19,6 +18,7 @@ benzene = mda.Universe.empty(
 )
 benzene.add_TopologyAttr("bonds", bonds)
 
+
 @profile
 def am_slow(atoms):
     n_atoms = len(atoms)
@@ -29,6 +29,7 @@ def am_slow(atoms):
                 if ai in bond and aj in bond and i != j:
                     A[i, j] = 1
     return A
+
 
 @profile
 def am_fast(atoms):
